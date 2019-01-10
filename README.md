@@ -4,12 +4,8 @@
 
 - [Installation](#installation)
 - [Documentation](#documentation)
-  - [createType](#createtype)
-  - [createTypes](#createtypes)
   - [createAction](#createaction)
-  - [createRequest](#createrequest)
-  - [createFactory](#createfactory)
-  - [combineFactories](#createaction)
+  - [createActions](#createactions)
 
 ## Installation
 
@@ -27,10 +23,13 @@ npm install --save redux-house
 // actions.js
 import { createAction } from 'redux-house';
 
-const setUser = createAction('SET_USER', ['user']);
+const setEmpty = createAction('SET_EMPTY');
 
-const setToken = createAction('SET_TOKEN', ['token'], token => `Bearer ${token}`);
+const setUser = createAction('SET_USER', 'user');
 
+const setToken = createAction('SET_TOKEN', 'token', value => `Bearer ${value}`);
+
+empty(); // { type: 'SET_EMPTY' }
 setUser('Doug'); // { type: 'SET_USER', user: 'Doug' }
 setToken('abc123'); // { type: 'SET_TOKEN', token: 'Bearer abc123' }
 ```
@@ -42,10 +41,10 @@ setToken('abc123'); // { type: 'SET_TOKEN', token: 'Bearer abc123' }
 import { createActions } from 'redux-house';
 
 const actions = createActions({
-  SET_USER: ['user'],
-  SET_TOKEN: [
-    { token: token => `Bearer ${token}`},
-  ],
+  SET_USER: 'user',
+  SET_TOKEN: {
+    token: value => `Bearer ${value}`,
+  },
 });
 
 actions.setUser('Doug'); // { type: 'SET_USER', user: 'Doug' }
