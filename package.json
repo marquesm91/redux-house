@@ -1,9 +1,22 @@
 {
   "name": "redux-house",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Redux House gives you a productive way to create Actions, Requests and Reducers",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "lib/index.js",
+  "unpkg": "dist/redux-house.js",
+  "module": "es/index.js",
+  "sideEffects": false,
+  "files": [
+    "es",
+    "lib",
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "redux-house",
+    "redux",
+    "fp"
+  ],
   "author": "Matheus Marques <marquesm91@gmail.com>",
   "homepage": "https://github.com/marquesm91/redux-house",
   "repository": {
@@ -14,67 +27,91 @@
     "url": "https://github.com/marquesm91/redux-house/issues"
   },
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "lint": "eslint 'src/**/*.js'",
+    "format": "prettier --write \"**/*.{js,md}\"",
+    "format:check": "prettier --list-different \"**/*.{js,md}\"",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir es",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build:umd": "rollup -c && es-check es5 dist/redux-house.min.js",
+    "build": "run-s lint test clean && run-p build:** && yarn version --new-version",
     "test": "jest",
     "test:watch": "jest --watch",
-    "clean": "rm -rf dist && mkdir dist",
-    "build": "yarn lint && yarn test && yarn clean && rollup -c && yarn version --new-version"
+    "clean": "rimraf coverage dist es lib",
+    "lint": "xo",
+    "prepublishOnly": "run-s build"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^23.6.0",
+    "cross-env": "^5.2.0",
+    "es-check": "^5.0.0",
+    "eslint": "^5.12.0",
+    "eslint-config-jest-files": "^0.1.3",
+    "eslint-config-unicorn-camelcase": "^0.1.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.2.1",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.15.3",
+    "rimraf": "^2.6.3",
+    "rollup": "^0.67.1",
+    "rollup-plugin-babel": "^4.3.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-terser": "^4.0.2",
+    "xo": "^0.23.0"
+  },
+  "dependencies": {
+    "ramda": "^0.26.1"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged && yarn test"
     }
   },
+  "browserify": {
+    "transform": [
+      "loose-envify"
+    ]
+  },
   "lint-staged": {
     "*.js,!dist/*.js": [
-      "pretty-quick --staged",
-      "eslint src/ --fix",
+      "prettier --write",
       "git add"
     ]
   },
-  "dependencies": {
-    "es6-promise": "^4.2.5",
-    "ramda": "^0.26.1",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+  "jest": {
+    "collectCoverage": true
   },
-  "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "@babel/polyfill": "^7.2.3",
-    "@babel/preset-env": "^7.2.3",
-    "axios": "^0.18.0",
-    "babel-core": "^7.0.0-0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
-    "chai": "^4.2.0",
-    "chalk": "^2.4.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-prettier": "^3.0.0",
-    "eslint-plugin-react": "^7.11.1",
-    "fs": "^0.0.1-security",
-    "husky": "^1.2.1",
-    "jest": "^23.6.0",
-    "jest-mock-axios": "^2.1.11",
-    "jest-watch-toggle-config": "^1.0.2",
-    "lint-staged": "^8.1.0",
-    "path": "^0.12.7",
-    "prettier": "^1.15.3",
-    "prettier-eslint": "^8.8.2",
-    "pretty-quick": "^1.8.0",
-    "redux-mock-store": "^1.5.3",
-    "regenerator-runtime": "^0.13.1",
-    "rollup": "^0.67.1",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-terser": "^3.0.0",
-    "sinon": "^7.0.0"
+  "prettier": {
+    "singleQuote": true,
+    "useTabs": false,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 80,
+    "semi": true,
+    "eslintIntegration": true,
+    "bracketSpacing": true,
+    "arrowParens": "avoid"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true,
+    "extends": [
+      "unicorn-camelcase",
+      "jest-files"
+    ],
+    "ignores": [
+      "rollup.config.js",
+      "jest1.config.js",
+      "babel.config.js"
+    ]
   }
 }
