@@ -28,8 +28,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "format": "prettier --write \"**/*.{js,md}\"",
-    "format:check": "prettier --list-different \"**/*.{js,md}\"",
+    "format": "prettier --write '**/*.{js,md}'",
+    "format:check": "prettier --list-different '**/*.{js,md}'",
     "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:umd": "rollup -c && es-check es5 dist/redux-house.min.js",
