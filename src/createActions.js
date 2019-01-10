@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import { is, length } from 'ramda';
 import createAction from './createAction';
 import camelize from './utils/camelize';
 
@@ -11,10 +11,10 @@ export default object => {
     const actionName = camelize(key);
     const value = object[key];
 
-    if (R.is(Array, value)) {
+    if (is(Array, value)) {
       const target = value[0];
 
-      if (R.length(value) === 2) {
+      if (length(value) === 2) {
         const effect = value[1];
         actions[actionName] = createAction(key, target, effect);
       } else {

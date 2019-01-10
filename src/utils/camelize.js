@@ -1,16 +1,16 @@
-import * as R from 'ramda';
+import { join, juxt, head, compose, map, tail, split, toLower } from 'ramda';
 import capitalize from './capitalize';
 
-export default R.compose(
-  R.join(''),
-  R.juxt([
-    R.head,
-    R.compose(
-      R.join(''),
-      R.map(capitalize),
-      R.tail
+export default compose(
+  join(''),
+  juxt([
+    head,
+    compose(
+      join(''),
+      map(capitalize),
+      tail
     ),
   ]),
-  R.split('_'),
-  R.toLower
+  split('_'),
+  toLower
 );

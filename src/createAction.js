@@ -1,14 +1,14 @@
-import * as R from 'ramda';
+import { isNil, compose, assoc, objOf } from 'ramda';
 import identity from './utils/identity';
 
 export default (type, param, effect = identity) => {
-  if (R.isNil(param)) {
+  if (isNil(param)) {
     return () => ({ type });
   }
 
-  return R.compose(
-    R.assoc('type', type),
-    R.objOf(param),
+  return compose(
+    assoc('type', type),
+    objOf(param),
     effect
   );
 };
