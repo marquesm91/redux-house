@@ -34,8 +34,8 @@
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:umd": "rollup -c && es-check es5 dist/redux-house.min.js",
     "build": "run-s lint test clean && run-p build:**",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch --verbose",
     "clean": "rimraf coverage dist es lib",
     "lint": "xo",
     "prepublishOnly": "run-s build"
@@ -86,9 +86,6 @@
       "prettier --write",
       "git add"
     ]
-  },
-  "jest": {
-    "collectCoverage": true
   },
   "prettier": {
     "singleQuote": true,
