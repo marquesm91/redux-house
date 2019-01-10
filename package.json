@@ -33,7 +33,7 @@
     "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:umd": "rollup -c && es-check es5 dist/redux-house.min.js",
-    "build": "run-s lint test clean && run-p build:** && yarn version --new-version",
+    "build": "run-s lint test clean && run-p build:**",
     "test": "jest",
     "test:watch": "jest --watch",
     "clean": "rimraf coverage dist es lib",
@@ -82,7 +82,7 @@
     ]
   },
   "lint-staged": {
-    "*.js,!dist/*.js": [
+    "*.{js,md}": [
       "prettier --write",
       "git add"
     ]
