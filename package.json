@@ -1,6 +1,6 @@
 {
   "name": "redux-factory",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "Redux Factory to gives a productive way to create Actions, Requests and Reducers",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -18,12 +18,11 @@
     "dist"
   ],
   "scripts": {
-    "lint": "eslint 'src/**/*.{js, jsx}'",
+    "lint": "eslint 'src/**/*.js'",
     "test": "jest",
     "test:watch": "jest --watch",
     "clean": "rm -rf dist && mkdir dist",
-    "bump": "node scripts/build/bump-version.js",
-    "build": "yarn lint && yarn test && yarn clean && rollup -c && yarn bump"
+    "build": "yarn lint && yarn test && yarn clean && rollup -c && yarn version"
   },
   "husky": {
     "hooks": {
@@ -31,7 +30,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx},!dist/*.{js, jsx}": [
+    "*.js,!dist/*.js": [
       "pretty-quick --staged",
       "eslint src/ --fix",
       "git add"
