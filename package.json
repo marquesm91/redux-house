@@ -22,7 +22,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "clean": "rm -rf dist && mkdir dist",
-    "build": "yarn lint && yarn test && yarn clean && rollup -c && yarn version"
+    "build": "yarn lint && yarn test && yarn clean && rollup -c && yarn version --new-version"
   },
   "husky": {
     "hooks": {
