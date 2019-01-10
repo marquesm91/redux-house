@@ -14,8 +14,8 @@
   ],
   "keywords": [
     "redux-house",
-    "redux",
-    "fp"
+    "house",
+    "redux"
   ],
   "author": "Matheus Marques <marquesm91@gmail.com>",
   "homepage": "https://github.com/marquesm91/redux-house",
@@ -94,7 +94,6 @@
     "trailingComma": "es5",
     "printWidth": 80,
     "semi": true,
-    "eslintIntegration": true,
     "bracketSpacing": true,
     "arrowParens": "avoid"
   },

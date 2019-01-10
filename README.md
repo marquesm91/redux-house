@@ -1,4 +1,8 @@
-# Redux House
+# redux-house
+
+[![Build Status](https://travis-ci.org/marquesm91/redux-house.svg?branch=master)](https://travis-ci.org/marquesm91/redux-house)
+[![codecov](https://codecov.io/gh/marquesm91/redux-house/branch/master/graph/badge.svg)](https://codecov.io/gh/marquesm91/redux-house)
+[![npm](https://img.shields.io/github/issues/marquesm91/redux-house.svg)](https://github.com/marquesm91/redux-house)
 
 ## Table of Contents
 
