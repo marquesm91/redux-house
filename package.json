@@ -1,6 +1,6 @@
 {
   "name": "redux-house",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Redux House gives you a productive way to create Actions, Requests and Reducers",
   "main": "lib/index.js",
   "unpkg": "dist/redux-house.js",
