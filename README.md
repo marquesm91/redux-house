@@ -41,12 +41,12 @@ setToken('abc123'); // { type: 'SET_TOKEN', token: 'Bearer abc123' }
 import { createActions } from 'redux-house';
 
 const actions = createActions({
-  SET_USER: 'user',
-  SET_TOKEN: {
-    token: value => `Bearer ${value}`,
-  },
+  SET_EMPTY: null,
+  SET_USER: 'user', // or ['user']
+  SET_TOKEN: ['token', value => `Bearer ${value}`],
 });
 
+actions.setEmpty(); // { type: 'SET_EMPTY' }
 actions.setUser('Doug'); // { type: 'SET_USER', user: 'Doug' }
 actions.setToken('abc123'); // { type: 'SET_TOKEN', token: 'Bearer abc123' }
 ```
