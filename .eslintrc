@@ -1,0 +1,37 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "no-prototype-builtins": 0,
+    "no-underscore-dangle": 0,
+    "func-names": 0,
+    "arrow-parens": 0,
+    "function-paren-newline": 0,
+    "no-console": 0,
+    "no-bitwise": 0,
+    "object-curly-newline": 0,
+    "implicit-arrow-linebreak": 0,
+    "global-require": 0,
+    "space-before-function-paren": [
+      "error",
+      { "anonymous": "never", "named": "never", "asyncArrow": "always" }
+    ],
+    "object-curly-spacing": 0,
+    "camelcase": 0,
+    "no-param-reassign": "off",
+    "import/prefer-default-export": 0,
+    "import/no-named-as-default": 0,
+    "import/no-unresolved": 0,
+    "import/no-named-as-default-member": 0,
+    "import/imports-first": ["error", "absolute-first"],
+    "import/newline-after-import": "error",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-dynamic-require": 0,
+    "prettier/prettier": "error"
+  }
+}

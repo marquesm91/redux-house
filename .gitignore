@@ -1,0 +1,26 @@
+# OSX
+#
+.DS_Store
+
+# Node.js
+#
+node_modules
+npm-debug.log
+yarn-error.log
+
+# build folders
+#
+# dist
+
+# package install locks
+package-lock.json
+yarn.lock
+
+# Jest files and Bit
+#
+.jest/
+coverage
+
+# Generated Cache files from rollup-plugins-typescript2
+#
+.rpt2_cache

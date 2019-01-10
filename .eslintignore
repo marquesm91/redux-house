@@ -1,0 +1,7 @@
+build/
+dist/
+.jest/
+coverage/
+node_modules/
+*.min.js
+*.config.js

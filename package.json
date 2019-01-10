@@ -1,0 +1,81 @@
+{
+  "name": "redux-factory",
+  "version": "0.0.0",
+  "description": "Redux Factory to gives a productive way to create Actions, Requests and Reducers",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "author": "Matheus Marques <marquesm91@gmail.com>",
+  "homepage": "https://github.com/marquesm91/redux-factory",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marquesm91/redux-factory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marquesm91/redux-factory/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "lint": "eslint 'src/**/*.{js, jsx}'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "clean": "rm -rf dist && mkdir dist",
+    "bump": "node scripts/build/bump-version.js",
+    "build": "yarn lint && yarn test && yarn clean && rollup -c && yarn bump"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && yarn test"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx},!dist/*.{js, jsx}": [
+      "pretty-quick --staged",
+      "eslint src/ --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "es6-promise": "^4.2.5",
+    "ramda": "^0.26.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/polyfill": "^7.2.3",
+    "@babel/preset-env": "^7.2.3",
+    "axios": "^0.18.0",
+    "babel-core": "^7.0.0-0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "chai": "^4.2.0",
+    "chalk": "^2.4.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "fs": "^0.0.1-security",
+    "husky": "^1.2.1",
+    "jest": "^23.6.0",
+    "jest-mock-axios": "^2.1.11",
+    "jest-watch-toggle-config": "^1.0.2",
+    "lint-staged": "^8.1.0",
+    "path": "^0.12.7",
+    "prettier": "^1.15.3",
+    "prettier-eslint": "^8.8.2",
+    "pretty-quick": "^1.8.0",
+    "redux-mock-store": "^1.5.3",
+    "regenerator-runtime": "^0.13.1",
+    "rollup": "^0.67.1",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-terser": "^3.0.0",
+    "sinon": "^7.0.0"
+  }
+}
