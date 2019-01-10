@@ -1,17 +1,17 @@
 {
-  "name": "redux-factory",
+  "name": "redux-house",
   "version": "0.0.1",
-  "description": "Redux Factory to gives a productive way to create Actions, Requests and Reducers",
+  "description": "Redux House gives you a productive way to create Actions, Requests and Reducers",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "author": "Matheus Marques <marquesm91@gmail.com>",
-  "homepage": "https://github.com/marquesm91/redux-factory",
+  "homepage": "https://github.com/marquesm91/redux-house",
   "repository": {
     "type": "git",
-    "url": "https://github.com/marquesm91/redux-factory.git"
+    "url": "https://github.com/marquesm91/redux-house.git"
   },
   "bugs": {
-    "url": "https://github.com/marquesm91/redux-factory/issues"
+    "url": "https://github.com/marquesm91/redux-house/issues"
   },
   "license": "MIT",
   "files": [
