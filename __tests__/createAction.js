@@ -1,4 +1,4 @@
-import createAction from 'createAction';
+import createAction from '../src/createAction';
 
 describe('createAction', () => {
   it('should return a function', () => {

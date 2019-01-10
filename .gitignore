@@ -10,17 +10,21 @@ yarn-error.log
 
 # build folders
 #
-# dist
+dist
+lib
+es
 
-# package install locks
+# Locks
 package-lock.json
 yarn.lock
 
-# Jest files and Bit
+# Jest files
 #
-.jest/
+.jest
 coverage
 
 # Generated Cache files from rollup-plugins-typescript2
 #
 .rpt2_cache
+*.log
+.ideia

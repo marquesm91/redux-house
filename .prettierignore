@@ -1,0 +1,8 @@
+.jest
+dist
+coverage
+es
+lib
+node_modules
+*.min.js
+*.config.js

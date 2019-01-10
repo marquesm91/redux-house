@@ -1,37 +1,49 @@
-import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+import resolve from 'rollup-plugin-node-resolve';
+import babel from 'rollup-plugin-babel';
+import replace from 'rollup-plugin-replace';
 import { terser } from 'rollup-plugin-terser';
 
-import pkg from './package.json';
-
-const input = 'src/index.js';
-
-const external = [
-  ...Object.keys(pkg.dependencies || {}),
-  ...Object.keys(pkg.peerDependencies || {}),
-];
-
-const plugins = [resolve(), commonjs(), terser()];
-
 export default [
+  // UMD Development
   {
-    input,
+    input: 'src/index.js',
     output: {
-      file: pkg.main,
-      format: 'cjs',
-      exports: 'named',
+      file: 'dist/redux-house.js',
+      format: 'umd',
+      name: 'ReduxHouse',
+      indent: false,
     },
-    external,
-    plugins,
+    plugins: [
+      resolve(),
+      commonjs(),
+      babel(),
+      replace({ 'process.env.NODE_ENV': JSON.stringify('development') }),
+    ],
   },
+
+  // UMD Production
   {
-    input,
+    input: 'src/index.js',
     output: {
-      file: pkg.module,
-      format: 'es',
-      exports: 'named',
+      file: 'dist/redux-house.min.js',
+      format: 'umd',
+      name: 'ReduxHouse',
+      indent: false,
     },
-    external,
-    plugins,
+    plugins: [
+      resolve(),
+      commonjs(),
+      babel(),
+      replace({ 'process.env.NODE_ENV': JSON.stringify('production') }),
+      terser({
+        compress: {
+          pure_getters: true,
+          unsafe: true,
+          unsafe_comps: true,
+          warnings: false,
+        },
+      }),
+    ],
   },
 ];

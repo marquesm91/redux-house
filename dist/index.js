@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var R=require("ramda"),identity=e=>e,createAction=(e,t,i=identity)=>R.isNil(t)?()=>({type:e}):R.compose(R.assoc("type",e),R.objOf(t),i);exports.createAction=createAction;
