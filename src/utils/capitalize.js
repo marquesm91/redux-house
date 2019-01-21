@@ -1,12 +1,12 @@
-import { join, juxt, compose, toUpper, head, tail } from 'ramda';
+import * as R from 'ramda';
 
-export default compose(
-  join(''),
-  juxt([
-    compose(
-      toUpper,
-      head
+export default R.compose(
+  R.join(''),
+  R.juxt([
+    R.compose(
+      R.toUpper,
+      R.head
     ),
-    tail,
+    R.tail,
   ])
 );
