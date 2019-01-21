@@ -10,6 +10,6 @@ describe('screamlize', () => {
   });
 
   it('should transform "my_String" to "MY_STRING"', () => {
-    expect(screamlize('myString')).toEqual('MY_STRING');
+    expect(screamlize('my_String')).toEqual('MY_STRING');
   });
 });
